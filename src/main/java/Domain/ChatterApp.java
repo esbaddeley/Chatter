@@ -5,10 +5,15 @@ package Domain;
  */
 public class ChatterApp {
 
+    private final UserRepository userRepository;
     private  User currentUser;
 
-    public void createUser(String name) {
+    public ChatterApp(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
+    public void createUser(String name) {
+        userRepository.createUser(name);
     }
 
 

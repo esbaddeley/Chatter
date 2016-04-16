@@ -2,6 +2,7 @@ package Feature;
 
 import Domain.ChatterApp;
 import Domain.Console;
+import Domain.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,13 +18,14 @@ import static org.mockito.Mockito.verify;
 
 public class CreateUser {
 
-    @Mock
-    Console console;
+    @Mock Console console;
     private ChatterApp chatter;
+    private UserRepository userRepository;
 
     @Before
     public void initialise() {
-        chatter = new ChatterApp();
+        userRepository = new UserRepository();
+        chatter = new ChatterApp(userRepository);
     }
 
 
