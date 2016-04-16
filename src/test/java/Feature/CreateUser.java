@@ -25,15 +25,15 @@ public class CreateUser {
     @Before
     public void initialise() {
         userRepository = new UserRepository();
-        chatter = new ChatterApp(userRepository);
+        chatter = new ChatterApp(userRepository, console);
     }
 
 
     @Test
     public void
     createANewUser() {
-        chatter.createUser("Emma");
-        verify(console).printLine("Welcome to Chatter Emma!");
+        chatter.createUser("Emma", "@emmab");
+        verify(console).printLine("Welcome to Chatter, Emma");
     }
 
 

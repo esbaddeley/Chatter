@@ -17,16 +17,23 @@ public class ChatterAppTest {
 
     private  ChatterApp chatter;
     @Mock private UserRepository userRepository;
+    @Mock private Console console;
 
     @Before
     public void initialize(){
-        chatter = new ChatterApp(userRepository);
+        chatter = new ChatterApp(userRepository, console);
     }
 
     @Test public void
     createUserShouldCreateAUser(){
-        chatter.createUser("Emma");
-        verify(userRepository).createUser("Emma");
+        chatter.createUser("Emma", "@emmab");
+        verify(userRepository).createUser("Emma", "@emmab");
+    }
+
+    @Test public void
+    createUserShouldGreetUser(){
+        chatter.createUser("Emma", "@emmab");
+        verify(console).printLine("Welcome to Chatter, Emma");
     }
 
 

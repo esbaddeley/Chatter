@@ -6,6 +6,6 @@ package Domain;
 public class Console {
 
     public void printLine(String text){
-        throw new UnsupportedOperationException();
+        System.out.println(text);;
     }
 }
