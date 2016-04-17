@@ -15,7 +15,7 @@ public class MessagePrinter {
         for( Message message : messages){
             messageString += formattedMessage(message, user);
         }
-     return messageString;
+        return messageString;
     }
 
     private String formattedMessage(Message message, User user){
@@ -25,13 +25,12 @@ public class MessagePrinter {
                 + "\n";
     }
 
-
     public String printSubscriptions(User user) {
         List<User> subscriptions = user.subscriptions();
         String subscriptionMessageString = "";
         for ( User subscribedUser : subscriptions){
             subscriptionMessageString += printTimeline(subscribedUser);
         }
-      return subscriptionMessageString;
+        return subscriptionMessageString;
     }
 }

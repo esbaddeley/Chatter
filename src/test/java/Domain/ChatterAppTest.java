@@ -66,6 +66,13 @@ public class ChatterAppTest {
         verify(console).printLine("Messages:\nThis is my first chatter post! - @nikesh\nThis is a post from leo - @leo\n");
     }
 
+    @Test public void
+    viewAllUsers(){
+        when(userRepository.printAllUsers()).thenReturn("Nikesh\nSpike\nLeo");
+        chatter.viewUsers();
+        verify(console).printLine("Users:\nNikesh\nSpike\nLeo");
+    }
+
 
 
 }

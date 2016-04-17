@@ -40,7 +40,6 @@ public class UserRepository {
 
     public void postMessage(String text) {
         currentUser.postMessage(text);
-
     }
 
     public String printUserTimeline(String username) {
@@ -48,17 +47,20 @@ public class UserRepository {
         return messagePrinter.printTimeline(user);
     }
 
-
     public void subscribe(String username) {
         User user = users.get(username);
         currentUser.subscribe(user);
     }
 
-    public Map<String,User> currentSubscriptions() {
-        return Collections.unmodifiableMap(subscriptions);
-    }
-
     public String printAllSubscriptions() {
         return messagePrinter.printSubscriptions(currentUser);
+    }
+
+    public String printAllUsers() {
+        String usersString = "";
+        for (String username : users.keySet()){
+            usersString += username + "\n";
+        }
+        return usersString;
     }
 }

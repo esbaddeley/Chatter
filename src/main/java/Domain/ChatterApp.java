@@ -9,6 +9,7 @@ public class ChatterApp {
     private  User currentUser;
     private final String WELCOME_MESSAGE = "Welcome to Chatter, ";
     private final String MESSAGES_HEADER = "Messages:\n";
+    private final String USERS_HEADER = "Users:\n";
     private Console console;
 
     public ChatterApp(UserRepository userRepository, Console console) {
@@ -20,7 +21,6 @@ public class ChatterApp {
         userRepository.createUser(name, handle);
         console.printLine(WELCOME_MESSAGE + name );
     }
-
 
     public void postMessage(String text) {
         userRepository.postMessage(text);
@@ -38,5 +38,10 @@ public class ChatterApp {
     public void viewSubscriptionsTimeline() {
         String subscriptionMessagesString = userRepository.printAllSubscriptions();
         console.printLine(MESSAGES_HEADER + subscriptionMessagesString);
+    }
+
+    public void viewUsers() {
+        String users = userRepository.printAllUsers();
+        console.printLine(USERS_HEADER + users);
     }
 }

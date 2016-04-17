@@ -80,6 +80,15 @@ public class UserRepositoryTest {
         verify(messagePrinter).printSubscriptions(nikeshUser);
     }
 
+    @Test
+    public void printAllUsers(){
+        userRepository.createUser("Nikesh", "@nikesh");
+        userRepository.createUser("Spike", "@spike");
+        userRepository.createUser("Leo", "@leo");
+        String usersString = userRepository.printAllUsers();
+        assertEquals("Spike\nLeo\nNikesh\n", usersString);
+    }
+
     private User createUser(String name, String handle) {
         return new User(name, handle);
     }
