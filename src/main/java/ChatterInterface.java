@@ -23,12 +23,12 @@ public class ChatterInterface {
 
     public ChatterInterface(){
         menu = new ArrayList<String>();
+        menu.add("Create - Create New User");
         menu.add("Post -  Create a Post");
         menu.add("View -  View Other Users");
         menu.add("Posts - View My Posts");
         menu.add("Subscribe - Subscribe to a User");
         menu.add("Subscriptions - View timeline of all Subscriptions");
-        menu.add("Create - Create New User");
         menu.add("Quit - Quit");
     }
 
