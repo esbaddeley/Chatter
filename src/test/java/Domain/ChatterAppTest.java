@@ -34,7 +34,7 @@ public class ChatterAppTest {
     @Test public void
     createUserShouldGreetUser(){
         chatter.createUser("Emma", "@emmab");
-        verify(console).printLine("Welcome to Chatter, Emma");
+        verify(console).printLine("\n\nWelcome to Chatter, Emma");
     }
 
     @Test public void
@@ -49,7 +49,7 @@ public class ChatterAppTest {
         when(userRepository.printUserTimeline("Nikesh")).thenReturn("This is my first chatter post! - @nikesh");
         chatter.viewTimeline("Nikesh");
         verify(userRepository).printUserTimeline("Nikesh");
-        verify(console).printLine("Messages:\nThis is my first chatter post! - @nikesh");
+        verify(console).printLine("\n\nMessages:\nThis is my first chatter post! - @nikesh");
     }
 
     @Test public void
@@ -63,14 +63,14 @@ public class ChatterAppTest {
         when(userRepository.printAllSubscriptions()).thenReturn("This is my first chatter post! - @nikesh\nThis is a post from leo - @leo\n");
         chatter.viewSubscriptionsTimeline();
         verify(userRepository).printAllSubscriptions();
-        verify(console).printLine("Messages:\nThis is my first chatter post! - @nikesh\nThis is a post from leo - @leo\n");
+        verify(console).printLine("\n\nMessages:\nThis is my first chatter post! - @nikesh\nThis is a post from leo - @leo\n");
     }
 
     @Test public void
     viewAllUsers(){
         when(userRepository.printAllUsers()).thenReturn("Nikesh\nSpike\nLeo");
         chatter.viewUsers();
-        verify(console).printLine("Users:\nNikesh\nSpike\nLeo");
+        verify(console).printLine("\n\nUsers:\nNikesh\nSpike\nLeo");
     }
 
 

@@ -42,11 +42,11 @@ public class ChatterInterface {
 
 
     private String promptAction() throws IOException {
-        console.printLine("Welcome to Chatter, please choose an action");
+        console.printLine("\n\n\nWelcome to Chatter, please choose an action\n\n\n");
         for (String menuItem : menu){
             console.printLine(menuItem);
         }
-        console.printLine("What do you want to do?");
+        console.printLine("\n\nWhat do you want to do?\n\n");
         String choice = reader.readLine();
         return choice.trim().toLowerCase();
     }
@@ -80,11 +80,11 @@ public class ChatterInterface {
                         console.printLine("Goodbye!");
                         break;
                     default:
-                        console.printLine("Unknown Choice - try again");
+                        console.printLine("\nUnknown Choice - try again\n");
                 }
 
             } catch (IOException ioe) {
-                console.printLine("Problem with Input");
+                console.printLine("\nProblem with Input\n");
                 ioe.printStackTrace();
             }
 

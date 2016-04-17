@@ -7,9 +7,9 @@ public class ChatterApp {
 
     private final UserRepository userRepository;
     private  User currentUser;
-    private final String WELCOME_MESSAGE = "Welcome to Chatter, ";
-    private final String MESSAGES_HEADER = "Messages:\n";
-    private final String USERS_HEADER = "Users:\n";
+    private final String WELCOME_MESSAGE = "\n\nWelcome to Chatter, ";
+    private final String MESSAGES_HEADER = "\n\nMessages:\n";
+    private final String USERS_HEADER = "\n\nUsers:\n";
     private Console console;
 
     public ChatterApp(UserRepository userRepository, Console console) {

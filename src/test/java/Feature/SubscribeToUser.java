@@ -44,10 +44,10 @@ public class SubscribeToUser {
         chatter.subscribe("Spike");
         chatter.subscribe("Nikesh");
         chatter.viewSubscriptionsTimeline();
-        verify(console).printLine("Welcome to Chatter, Spike");
-        verify(console).printLine("Welcome to Chatter, Nikesh");
-        verify(console).printLine("Welcome to Chatter, Leo");
-        verify(console).printLine("Messages:\nspike's first post - @spike\nnikesh's first post - @nikesh\n");
+        verify(console).printLine("\n\nWelcome to Chatter, Spike");
+        verify(console).printLine("\n\nWelcome to Chatter, Nikesh");
+        verify(console).printLine("\n\nWelcome to Chatter, Leo");
+        verify(console).printLine("\n\nMessages:\nspike's first post - @spike\nnikesh's first post - @nikesh\n");
     }
 
 

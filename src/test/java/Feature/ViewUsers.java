@@ -37,9 +37,9 @@ public class ViewUsers {
         chatter.createUser("Spike", "@spike");
         chatter.createUser("Leo", "@leo");
         chatter.viewUsers();
-        verify(console).printLine("Welcome to Chatter, Nikesh");
-        verify(console).printLine("Welcome to Chatter, Spike");
-        verify(console).printLine("Welcome to Chatter, Leo");
-        verify(console).printLine("Users:\nSpike\nLeo\nNikesh\n");
+        verify(console).printLine("\n\nWelcome to Chatter, Nikesh");
+        verify(console).printLine("\n\nWelcome to Chatter, Spike");
+        verify(console).printLine("\n\nWelcome to Chatter, Leo");
+        verify(console).printLine("\n\nUsers:\nSpike\nLeo\nNikesh\n");
     }
 }

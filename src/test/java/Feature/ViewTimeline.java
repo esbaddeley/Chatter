@@ -36,9 +36,9 @@ public class ViewTimeline {
         chatter.postMessage("This is my first chatter post!");
         chatter.createUser("Spike", "@spike");
         chatter.viewTimeline("Nikesh");
-        verify(console).printLine("Welcome to Chatter, Nikesh");
-        verify(console).printLine("Welcome to Chatter, Spike");
-        verify(console).printLine("Messages:\nThis is my first chatter post! - @nikesh\n");
+        verify(console).printLine("\n\nWelcome to Chatter, Nikesh");
+        verify(console).printLine("\n\nWelcome to Chatter, Spike");
+        verify(console).printLine("\n\nMessages:\nThis is my first chatter post! - @nikesh\n");
     }
 
 }

@@ -35,7 +35,7 @@ public class CreateUser {
     @Test
     public void createANewUser() {
         chatter.createUser("Emma", "@emmab");
-        verify(console).printLine("Welcome to Chatter, Emma");
+        verify(console).printLine("\n\nWelcome to Chatter, Emma");
     }
 
 

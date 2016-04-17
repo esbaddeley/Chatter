@@ -36,7 +36,7 @@ public class PostMessage {
         chatter.createUser("Emma", "@emmab");
         chatter.postMessage("This is my first chatter post!");
         chatter.viewTimeline("Emma");
-        verify(console).printLine("Welcome to Chatter, Emma");
-        verify(console).printLine("Messages:\nThis is my first chatter post! - @emmab\n");
+        verify(console).printLine("\n\nWelcome to Chatter, Emma");
+        verify(console).printLine("\n\nMessages:\nThis is my first chatter post! - @emmab\n");
     }
 }
