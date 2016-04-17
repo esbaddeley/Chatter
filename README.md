@@ -8,7 +8,7 @@ Chatter is a basic social network Command Line App built in Java.
 
 * Fork or Clone the repo on Github and clone down onto your local machine.
 * Install Gradle if not already installed (brew install gradle) and
-* Navigate to the main folder (/chatter) and run 'gradle dependancies' command to install dependancies.
+* Navigate to the main folder (/chatter) and run 'gradle dependencies' command to install dependencies.
 * Navigate to /chatter/scr/main/java then run 'javac Chatter.java && java Chatter' to launch the command line app.
 
 ### Instructions/Features
