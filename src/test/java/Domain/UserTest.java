@@ -2,6 +2,7 @@ package Domain;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import static org.junit.Assert.assertThat;
  */
 public class UserTest {
     private User user;
+    @Mock User nikeshUser;
 
     @Before
     public void initialize() {
@@ -24,6 +26,13 @@ public class UserTest {
         user.postMessage("This is my first post");
         List<Message> messages = user.viewTimeline();
         assertThat(messages.get(0), is(createMessage("This is my first post")));
+    }
+
+    @Test
+    public void subscribeAddsAUserToSubscriptions(){
+        user.subscribe(nikeshUser);
+        List<User> subscriptions = user.subscriptions();
+        assertThat(subscriptions.get(0), is(nikeshUser));
     }
 
     public Message createMessage(String text){

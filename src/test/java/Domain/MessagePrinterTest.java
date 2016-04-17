@@ -20,14 +20,17 @@ import static org.mockito.Mockito.when;
 public class MessagePrinterTest {
 
     @Mock User user;
+    @Mock User nikeshUser;
     @Mock Message message;
     private MessagePrinter messagePrinter;
     private List<Message> messages = new ArrayList<>();
+    private List<User> subscriptions = new ArrayList<>();
 
     @Before
     public void initialize(){
         messagePrinter = new MessagePrinter();
         messages.add(message);
+        subscriptions.add(nikeshUser);
     }
 
     @Test
@@ -41,5 +44,18 @@ public class MessagePrinterTest {
         verify(message).messageBody();
         assertEquals("My first message - @nikesh\n", printedMessages);
     }
+
+    @Test
+    public void printAllSubscriptionsShouldTakeAUserAndPrintAllSubscriptions(){
+        when(user.subscriptions()).thenReturn(subscriptions);
+        when(nikeshUser.viewTimeline()).thenReturn(messages);
+        when(nikeshUser.handle()).thenReturn("@nikesh");
+        when(message.messageBody()).thenReturn("My first message");
+        String subscriptionMessages = messagePrinter.printSubscriptions(user);
+        verify(user).subscriptions();
+        verify(nikeshUser).viewTimeline();
+        assertEquals("My first message - @nikesh\n", subscriptionMessages);
+    }
+
 
 }

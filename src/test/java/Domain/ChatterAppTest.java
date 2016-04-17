@@ -52,6 +52,20 @@ public class ChatterAppTest {
         verify(console).printLine("Messages:\nThis is my first chatter post! - @nikesh");
     }
 
+    @Test public void
+    subscribeToTargetUser(){
+        chatter.subscribe("Nikesh");
+        verify(userRepository).subscribe("Nikesh");
+    }
+
+    @Test public void
+    viewAllSubscriptionsTimeline(){
+        when(userRepository.printAllSubscriptions()).thenReturn("This is my first chatter post! - @nikesh\nThis is a post from leo - @leo\n");
+        chatter.viewSubscriptionsTimeline();
+        verify(userRepository).printAllSubscriptions();
+        verify(console).printLine("Messages:\nThis is my first chatter post! - @nikesh\nThis is a post from leo - @leo\n");
+    }
+
 
 
 }

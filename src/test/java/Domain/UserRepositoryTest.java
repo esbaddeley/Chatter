@@ -63,6 +63,23 @@ public class UserRepositoryTest {
         verify(messagePrinter).printTimeline(nikeshUser);
     }
 
+    @Test
+    public void subscribeToUserAddsUserToSubscriptions(){
+        userRepository.createUser("Nikesh", "@nikesh");
+        User nikeshUser = userRepository.currentUser();
+        userRepository.changeCurrentUser(user);
+        userRepository.subscribe("Nikesh");
+        verify(user).subscribe(nikeshUser);
+    }
+
+    @Test
+    public void printSubscriptionsPrintsAllMessagesOfSubscribedUsers(){
+        userRepository.createUser("Nikesh", "@nikesh");
+        User nikeshUser = userRepository.currentUser();
+        userRepository.printAllSubscriptions();
+        verify(messagePrinter).printSubscriptions(nikeshUser);
+    }
+
     private User createUser(String name, String handle) {
         return new User(name, handle);
     }

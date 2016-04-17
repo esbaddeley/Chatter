@@ -30,4 +30,13 @@ public class ChatterApp {
         String messagesString = userRepository.printUserTimeline(username);
         console.printLine(MESSAGES_HEADER + messagesString);
     }
+
+    public void subscribe(String username) {
+        userRepository.subscribe(username);
+    }
+
+    public void viewSubscriptionsTimeline() {
+        String subscriptionMessagesString = userRepository.printAllSubscriptions();
+        console.printLine(MESSAGES_HEADER + subscriptionMessagesString);
+    }
 }

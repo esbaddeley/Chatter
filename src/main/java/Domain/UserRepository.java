@@ -11,11 +11,13 @@ public class UserRepository {
     private final MessagePrinter messagePrinter;
     private Map<String,User> users;
     private User currentUser;
+    private Map<String, User> subscriptions;
 
     public UserRepository(MessagePrinter messagePrinter){
         this.users = new HashMap<>();
         this.currentUser = null;
         this.messagePrinter = messagePrinter;
+        this.subscriptions = new HashMap<>();
     }
 
     public void createUser(String name, String handle) {
@@ -47,4 +49,16 @@ public class UserRepository {
     }
 
 
+    public void subscribe(String username) {
+        User user = users.get(username);
+        currentUser.subscribe(user);
+    }
+
+    public Map<String,User> currentSubscriptions() {
+        return Collections.unmodifiableMap(subscriptions);
+    }
+
+    public String printAllSubscriptions() {
+        return messagePrinter.printSubscriptions(currentUser);
+    }
 }

@@ -26,4 +26,12 @@ public class MessagePrinter {
     }
 
 
+    public String printSubscriptions(User user) {
+        List<User> subscriptions = user.subscriptions();
+        String subscriptionMessageString = "";
+        for ( User subscribedUser : subscriptions){
+            subscriptionMessageString += printTimeline(subscribedUser);
+        }
+      return subscriptionMessageString;
+    }
 }

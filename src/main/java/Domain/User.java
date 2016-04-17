@@ -1,8 +1,7 @@
 package Domain;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by emmabaddeley on 14/04/2016.
@@ -13,6 +12,7 @@ public class User {
     private final String name;
     private final String handle;
     private final List<Message> messages = new ArrayList<Message>();
+    private final List< User> subscriptions = new ArrayList<>();
 
 
     public User(String name, String handle) {
@@ -55,4 +55,13 @@ public class User {
     public String username() {
         return name;
     }
+
+    public void subscribe(User user) {
+        subscriptions.add(user);
+    }
+
+    public List<User> subscriptions() {
+        return Collections.unmodifiableList(subscriptions);
+    }
+
 }
