@@ -16,10 +16,10 @@ import static org.mockito.Mockito.verify;
  * Created by emmabaddeley on 16/04/2016.
  */
 @RunWith(MockitoJUnitRunner.class)
+public class PostMessage {
 
-public class CreateUser {
-
-    @Mock Console console;
+    @Mock
+    Console console;
     private ChatterApp chatter;
     private UserRepository userRepository;
     private MessagePrinter messagePrinter;
@@ -31,14 +31,12 @@ public class CreateUser {
         chatter = new ChatterApp(userRepository, console);
     }
 
-
     @Test
-    public void createANewUser() {
+    public void postMessageShouldAddPostToTimeline () {
         chatter.createUser("Emma", "@emmab");
+        chatter.postMessage("This is my first chatter post!");
+        chatter.viewCurrentUserTimeline();
         verify(console).printLine("Welcome to Chatter, Emma");
+        verify(console).printLine("Messages:\nThis is my first chatter post!\n");
     }
-
-
-
-
 }

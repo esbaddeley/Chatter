@@ -36,5 +36,18 @@ public class ChatterAppTest {
         verify(console).printLine("Welcome to Chatter, Emma");
     }
 
+    @Test public void
+    postMessageShouldCreatePost(){
+        chatter.postMessage("This is my first post!");
+        verify(userRepository).postMessage("This is my first post!");
+    }
+
+    @Test public void
+    viewCurrentUserTimelineShowsPosts(){
+        chatter.viewCurrentUserTimeline();
+        verify(userRepository).printCurrentUserTimeline();
+        verify(console).printLine("Messages:\n This is my first chatter post!");
+    }
+
 
 }

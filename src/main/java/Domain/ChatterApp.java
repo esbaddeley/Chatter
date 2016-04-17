@@ -8,6 +8,7 @@ public class ChatterApp {
     private final UserRepository userRepository;
     private  User currentUser;
     private final String WELCOME_MESSAGE = "Welcome to Chatter, ";
+    private final String MESSAGES_HEADER = "Messages:\n";
     private Console console;
 
     public ChatterApp(UserRepository userRepository, Console console) {
@@ -21,5 +22,12 @@ public class ChatterApp {
     }
 
 
+    public void postMessage(String text) {
+        userRepository.postMessage(text);
+    }
 
+    public void viewCurrentUserTimeline() {
+        String messagesString = userRepository.printCurrentUserTimeline();
+        console.printLine(MESSAGES_HEADER + messagesString);
+    }
 }

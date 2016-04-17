@@ -1,6 +1,9 @@
 package Domain;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by emmabaddeley on 14/04/2016.
  */
@@ -9,14 +12,13 @@ public class User {
 
     private final String name;
     private final String handle;
+    private final List<Message> messages = new ArrayList<Message>();
 
 
     public User(String name, String handle) {
         this.name = name;
         this.handle = handle;
-
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -35,5 +37,14 @@ public class User {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (handle != null ? handle.hashCode() : 0);
         return result;
+    }
+
+    public List<Message> viewTimeline() {
+        return messages;
+    }
+
+    public void postMessage(String text) {
+        Message message = new Message(text);
+        messages.add(message);
     }
 }
