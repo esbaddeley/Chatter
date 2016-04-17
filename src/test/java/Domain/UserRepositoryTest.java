@@ -7,13 +7,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
+import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 
 /**
@@ -34,9 +33,9 @@ public class UserRepositoryTest {
     @Test
     public void creatingANewUser(){
         userRepository.createUser("Emma", "@emmab");
-        List<User> users = userRepository.allUsers();
+        Map<String, User> users = userRepository.allUsers();
         assertEquals(1, users.size());
-        assertThat(users.get(0), is(createUser("Emma", "@emmab")));
+        assertThat(users.get("Emma"), is(createUser("Emma", "@emmab")));
     }
 
 
@@ -55,17 +54,18 @@ public class UserRepositoryTest {
         verify(user).postMessage("This is my first Post");
     }
 
+
     @Test
-    public void viewUserTimelinePrintReturnsFormattedString(){
-        when(messagePrinter.printTimeline(user)).thenReturn("This is my first Post");
-        userRepository.changeCurrentUser(user);
-        String messages = userRepository.printCurrentUserTimeline();
-        verify(messagePrinter).printTimeline(user);
-        assertThat(messages, is("This is my first Post"));
+    public void viewUserTimelineReturnsFormattedString(){
+        userRepository.createUser("Nikesh", "@nikesh");
+        User nikeshUser = userRepository.currentUser();
+        userRepository.printUserTimeline("Nikesh");
+        verify(messagePrinter).printTimeline(nikeshUser);
     }
 
     private User createUser(String name, String handle) {
         return new User(name, handle);
     }
+
 
 }

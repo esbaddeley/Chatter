@@ -13,13 +13,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.mockito.Mockito.verify;
 
 /**
- * Created by emmabaddeley on 16/04/2016.
+ * Created by emmabaddeley on 17/04/2016.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class PostMessage {
+public class ViewTimeline {
 
-    @Mock
-    Console console;
+    @Mock Console console;
     private ChatterApp chatter;
     private UserRepository userRepository;
     private MessagePrinter messagePrinter;
@@ -32,11 +31,14 @@ public class PostMessage {
     }
 
     @Test
-    public void postMessageShouldAddPostToTimeline () {
-        chatter.createUser("Emma", "@emmab");
+    public void userCanViewOtherUserTimeline(){
+        chatter.createUser("Nikesh", "@nikesh");
         chatter.postMessage("This is my first chatter post!");
-        chatter.viewTimeline("Emma");
-        verify(console).printLine("Welcome to Chatter, Emma");
+        chatter.createUser("Spike", "@spike");
+        chatter.viewTimeline("Nikesh");
+        verify(console).printLine("Welcome to Chatter, Nikesh");
+        verify(console).printLine("Welcome to Chatter, Nikesh");
         verify(console).printLine("Messages:\nThis is my first chatter post!\n");
     }
+
 }

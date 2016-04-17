@@ -47,4 +47,8 @@ public class User {
         Message message = new Message(text);
         messages.add(message);
     }
+
+    public String username() {
+        return name;
+    }
 }

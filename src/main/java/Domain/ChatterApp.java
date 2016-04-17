@@ -26,8 +26,8 @@ public class ChatterApp {
         userRepository.postMessage(text);
     }
 
-    public void viewCurrentUserTimeline() {
-        String messagesString = userRepository.printCurrentUserTimeline();
+    public void viewTimeline(String username) {
+        String messagesString = userRepository.printUserTimeline(username);
         console.printLine(MESSAGES_HEADER + messagesString);
     }
 }

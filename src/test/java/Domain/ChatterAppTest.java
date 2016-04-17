@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Created by emmabaddeley on 16/04/2016.
@@ -42,12 +43,15 @@ public class ChatterAppTest {
         verify(userRepository).postMessage("This is my first post!");
     }
 
+
     @Test public void
-    viewCurrentUserTimelineShowsPosts(){
-        chatter.viewCurrentUserTimeline();
-        verify(userRepository).printCurrentUserTimeline();
-        verify(console).printLine("Messages:\n This is my first chatter post!");
+    viewTargetUserTimeline(){
+        when(userRepository.printUserTimeline("Nikesh")).thenReturn("This is my first chatter post!");
+        chatter.viewTimeline("Nikesh");
+        verify(userRepository).printUserTimeline("Nikesh");
+        verify(console).printLine("Messages:\nThis is my first chatter post!");
     }
+
 
 
 }

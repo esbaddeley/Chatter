@@ -1,31 +1,31 @@
 package Domain;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by emmabaddeley on 16/04/2016.
  */
 public class UserRepository {
     private final MessagePrinter messagePrinter;
-    private List<User> users;
+    private Map<String,User> users;
     private User currentUser;
 
     public UserRepository(MessagePrinter messagePrinter){
-        this.users = new ArrayList<User>();
+        this.users = new HashMap<>();
         this.currentUser = null;
         this.messagePrinter = messagePrinter;
     }
 
     public void createUser(String name, String handle) {
         User newUser = new User(name, handle);
-        users.add(newUser);
+        users.put(name, newUser);
         currentUser = newUser;
     }
 
-    public List<User> allUsers() {
-        return Collections.unmodifiableList (users);
+    public Map<String, User> allUsers() {
+        return Collections.unmodifiableMap (users);
     }
 
     public User currentUser() {
@@ -41,10 +41,10 @@ public class UserRepository {
 
     }
 
-    public String printCurrentUserTimeline(){
-        return messagePrinter.printTimeline(currentUser);
+    public String printUserTimeline(String username) {
+        User user = users.get(username);
+        return messagePrinter.printTimeline(user);
     }
-
 
 
 }
