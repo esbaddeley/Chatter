@@ -33,12 +33,13 @@ public class MessagePrinterTest {
     @Test
     public void messagePrinterShouldTakeAUserAndFormatMessages(){
         when(user.viewTimeline()).thenReturn(messages);
+        when(user.handle()).thenReturn("@nikesh");
         when(message.messageBody()).thenReturn("My first message");
         String printedMessages;
         printedMessages = messagePrinter.printTimeline(user);
         verify(user).viewTimeline();
         verify(message).messageBody();
-        assertEquals("My first message\n", printedMessages);
+        assertEquals("My first message - @nikesh\n", printedMessages);
     }
 
 }

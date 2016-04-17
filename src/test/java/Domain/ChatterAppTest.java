@@ -46,10 +46,10 @@ public class ChatterAppTest {
 
     @Test public void
     viewTargetUserTimeline(){
-        when(userRepository.printUserTimeline("Nikesh")).thenReturn("This is my first chatter post!");
+        when(userRepository.printUserTimeline("Nikesh")).thenReturn("This is my first chatter post! - @nikesh");
         chatter.viewTimeline("Nikesh");
         verify(userRepository).printUserTimeline("Nikesh");
-        verify(console).printLine("Messages:\nThis is my first chatter post!");
+        verify(console).printLine("Messages:\nThis is my first chatter post! - @nikesh");
     }
 
 

@@ -39,6 +39,10 @@ public class User {
         return result;
     }
 
+    public String handle(){
+        return handle;
+    }
+
     public List<Message> viewTimeline() {
         return messages;
     }

@@ -7,13 +7,22 @@ import java.util.List;
  */
 public class MessagePrinter {
 
+    private final String MESSAGE_SEPARATOR = " - ";
+
     public String printTimeline(User user) {
         List<Message> messages = user.viewTimeline();
         String messageString = "";
         for( Message message : messages){
-            messageString += message.messageBody() + "\n";
+            messageString += formattedMessage(message, user);
         }
      return messageString;
+    }
+
+    private String formattedMessage(Message message, User user){
+        return message.messageBody()
+                + MESSAGE_SEPARATOR
+                + user.handle()
+                + "\n";
     }
 
 
