@@ -1,6 +1,7 @@
 >”This is no time to take your chips down. A million dollars isn’t cool, you know what’s cool "<br>
 >”You?"<br>
->”A social network implemented in Java"
+>”A social network implemented in Java" <br>
+
 ​
 Chatter is a basic social network Command Line App built in Java.
 
